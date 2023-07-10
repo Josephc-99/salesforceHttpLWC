@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="GET QUOTES"  icon-name="utility:salesforce1" class="slds-var-medium_around">
+        <div class="slds-box">
+            <lightning-combobox
+                data-id="category"
+                label="Category"
+                value={categ}
+                options={options}
+            ></lightning-combobox>
+
+            <lightning-input
+            data-id="count"
+            label="Count"
+            placeholder="Please enter the number of quotes you'd like to see."
+            type="number"
+            value={cnt}
+            max="10"
+            >
+
+        </lightning-input>
+        </div>
+        <lightning-button class="slds-border_top slds-box slds-align_absolute-center " onclick={buttonHandler} title="Get Quotes" label="Get Quotes" variant="destructive"></lightning-button>
+    <div>
+    <template if:true={quotes}>
+        <template for:each={quotes} for:item="quote">
+        <p key={quote} >{quote}</p>
+        
+    </template>
+    </template>
+    <template if:true={error}>
+        <p> {error}</p>
+    </template>
+</div>
+</lightning-card>
+
+</template>
